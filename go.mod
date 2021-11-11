@@ -1,4 +1,4 @@
-module steph0de.com/urlgen
+module steph0de.com/sslip-urlgen
 
 go 1.17
 
