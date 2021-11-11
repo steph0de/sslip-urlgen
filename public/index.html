@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Url Generator for sslip.io</title>
+    <style>
+        .center {
+            padding: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h3>Url Generator for sslip.io</h3>
+        <form id="urlgenForm">
+            Name: <input type="text" name="name" required><br>
+            IP Address: <input type="text" name="ipaddress" required><br>
+            <input type="submit" value="Submit">
+        </form>
+        <article style="padding: 30px 20px;">
+            URL: <a id="generatedUrl" ></a>
+        </article>
+    </main>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        let generatedUrl = document.getElementById("generatedUrl");
+        urlgenForm.onsubmit = async (e) => {
+            e.preventDefault();
+            
+            let response = await fetch('/v1/urlgen', {
+                method: 'POST',
+                body: new FormData(urlgenForm)
+            });
+            
+            let result = await response.json();
+            console.log(result)
+            generatedUrl.textContent = "https://" + result.domain;
+            generatedUrl.href = "https://" + result.domain;
+        };
+    </script>
+</body>

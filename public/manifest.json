@@ -1,0 +1,8 @@
+{
+    "name": "sslip-urlgen",
+    "short_name": "sslip-urlgen",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Url Generator for sslip.io."
+}
